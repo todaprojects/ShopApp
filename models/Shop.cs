@@ -95,17 +95,10 @@ namespace ShopApp.models
             return $"{Math.Round(User.Balance, 2)}";
         }
 
-        public void SetUserBalance(string amount)
+        public void SetUserBalance(double moneyAmount)
         {
-            try
-            {
-                User.Balance += double.Parse(amount);
-                App.Show(Message.MoneyAdded);
-            }
-            catch (Exception e)
-            {
-                throw new NotSupportedException();
-            }
+            User.Balance += moneyAmount;
+            App.Show(Message.MoneyAdded);
         }
     }
 }

@@ -54,7 +54,8 @@ namespace ShopApp
                             }
                             throw new ArgumentException();
                         case "topup":
-                            shop.SetUserBalance(userArgs[1]);
+                            var moneyAmount = double.Parse(userArgs[1]);
+                            shop.SetUserBalance(moneyAmount);
                             break;
                         case "exit":
                             runApp = false;
