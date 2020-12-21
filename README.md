@@ -10,6 +10,7 @@ A .NET console application, created with C#.
   - Create User class, that holds money balance; 
   - Use OOP, with min 2 classes.
     
+### Usage
 #### Available commands in the console:
 
   - `List` - display all available items;
