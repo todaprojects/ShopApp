@@ -1,5 +1,5 @@
 # Shop App
-A .NET console application, created with C#.
+A .NET console application, written in C#.
 
 ### Task
 
