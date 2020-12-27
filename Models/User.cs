@@ -1,4 +1,4 @@
-namespace ShopApp.models
+namespace ShopApp.Models
 {
     public class User
     {

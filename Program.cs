@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Text.RegularExpressions;
-using ShopApp.helpers;
-using ShopApp.models;
+using ShopApp.Factories;
+using ShopApp.Models;
+using ShopApp.Views;
 
 namespace ShopApp
 {

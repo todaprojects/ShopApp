@@ -1,4 +1,6 @@
-namespace ShopApp.models
+using ShopApp.Models;
+
+namespace ShopApp.Factories
 {
     public static class UserFactory
     {

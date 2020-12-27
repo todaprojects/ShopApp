@@ -1,4 +1,4 @@
-namespace ShopApp.helpers
+namespace ShopApp.Views
 {
     public enum Message
     {

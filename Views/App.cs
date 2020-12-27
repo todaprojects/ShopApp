@@ -1,6 +1,6 @@
 using System;
 
-namespace ShopApp.helpers
+namespace ShopApp.Views
 {
     public static class App
     {

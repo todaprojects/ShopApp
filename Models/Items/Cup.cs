@@ -1,4 +1,4 @@
-namespace ShopApp.models
+namespace ShopApp.Models.Items
 {
     public class Cup: Item
     {

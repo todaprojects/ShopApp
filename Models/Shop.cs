@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using ShopApp.helpers;
+using ShopApp.Views;
 
-namespace ShopApp.models
+namespace ShopApp.Models
 {
     public class Shop
     {

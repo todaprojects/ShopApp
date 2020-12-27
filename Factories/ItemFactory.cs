@@ -1,6 +1,8 @@
 using System;
+using ShopApp.Models;
+using ShopApp.Models.Items;
 
-namespace ShopApp.models
+namespace ShopApp.Factories
 {
     public static class ItemFactory
     {
