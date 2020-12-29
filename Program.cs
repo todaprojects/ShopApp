@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Text.RegularExpressions;
-using ShopApp.Factories;
+using ShopApp.Helpers;
 using ShopApp.Models;
-using ShopApp.Views;
+using ShopApp.Services;
 
 namespace ShopApp
 {
@@ -10,53 +9,53 @@ namespace ShopApp
     {
         static void Main(string[] args)
         {
-            var shop = new Shop();
+            var shop = ModelFactory.GetShop();
+            shop.Items.Add(ModelFactory.GetItem("Book", 12.90M));
+            shop.Items.Add(ModelFactory.GetItem("Candy", 4.90M));
+            shop.Items.Add(ModelFactory.GetItem("Cup", 9.90M));
 
-            shop.User = UserFactory.GetWithBalance(50);
-            
-            shop.Items.Add(ItemFactory.Get("Book"));
-            shop.Items.Add(ItemFactory.Get("Candy"));
-            shop.Items.Add(ItemFactory.Get("Cup"));
-            
+            var user = ModelFactory.GetUser();
+
+            var printer = ServiceFactory.GetPrinter();
+            var inputHandler = ServiceFactory.GetInputHandler();
+
             var runApp = true;
             while (runApp)
             {
-                App.Show(message: Message.Welcome);
-
-                var input = Console.ReadLine()?.ToLower();
-                var userArgs = Regex.Split(input ?? string.Empty, "\\s+");
-
                 try
                 {
+                    printer.Print(Message.Welcome);
+
+                    var userArgs = StringParser.Parse(inputHandler.GetInput());
+
                     switch (userArgs[0])
                     {
                         case "help":
-                            App.Show(Message.CommandList);
+                            printer.Print(Message.CommandList);
                             break;
                         case "list":
-                            Console.Write(shop.GetItemList());
+                            printer.Print(shop.GetItemList());
                             break;
                         case "buy":
-                            var wantedItem = userArgs[1];
-                            var wantedQuantity = int.Parse(userArgs[2]);
-                            shop.Sell(wantedItem, wantedQuantity);
+                            var buyItem = userArgs[1];
+                            var buyQuantity = int.Parse(userArgs[2]);
+                            var buyMessage = shop.SellItem(user, buyItem, buyQuantity);
+                            printer.Print(buyMessage);
                             break;
                         case "add":
-                            var targetItem = userArgs[1];
-                            var targetQuantity = int.Parse(userArgs[2]);
-                            shop.Add(targetItem, targetQuantity);
+                            var addItem = userArgs[1];
+                            var addQuantity = IntegerParser.Parse(userArgs[2]);
+                            var addItemMessage = shop.AddItem(addItem, addQuantity);
+                            printer.Print(addItemMessage);
                             break;
                         case "show":
-                            if (userArgs[1].ToLower() == "balance")
-                            {
-                                App.Show(Message.BalanceIs);
-                                Console.WriteLine(shop.GetUserBalance());
-                                break;
-                            }
-                            throw new ArgumentException();
+                            if (userArgs[1].ToLower() != "balance") throw new ArgumentException();
+                            printer.Print($"{Message.BalanceIs} {user.Balance}\n");
+                            break;
                         case "topup":
-                            var moneyAmount = double.Parse(userArgs[1]);
-                            shop.SetUserBalance(moneyAmount);
+                            var moneyAmount = DecimalParser.Parse(userArgs[1]);
+                            var addBalanceMessage = user.AddBalance(moneyAmount);
+                            printer.Print(addBalanceMessage);
                             break;
                         case "exit":
                             runApp = false;
@@ -65,11 +64,18 @@ namespace ShopApp
                             throw new ArgumentException();
                     }
                 }
+                catch (ArgumentException e)
+                {
+                    printer.Print(Message.UndefinedCommand);
+                }
                 catch (Exception e)
                 {
-                    App.Show(Message.UndefinedCommand);
+                    runApp = false;
+                    printer.Print(e.Message);
                 }
             }
+
+            printer.Print(Message.ExitProgram);
         }
     }
 }

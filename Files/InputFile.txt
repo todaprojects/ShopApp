@@ -1,0 +1,9 @@
+show balance
+topup 50
+show balance
+list
+buy cup 10
+list
+add cup 10
+list
+exit
