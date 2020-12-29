@@ -1,3 +1,4 @@
+using ShopApp.Interfaces;
 using ShopApp.Services;
 
 namespace ShopApp.Models

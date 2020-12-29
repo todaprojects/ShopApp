@@ -1,4 +1,4 @@
-namespace ShopApp.Services
+namespace ShopApp.Interfaces
 {
     public interface IPrinterService
     {

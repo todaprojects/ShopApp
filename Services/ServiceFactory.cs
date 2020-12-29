@@ -1,3 +1,5 @@
+using ShopApp.Interfaces;
+
 namespace ShopApp.Services
 {
     public static class ServiceFactory

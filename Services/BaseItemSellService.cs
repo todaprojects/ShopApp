@@ -1,5 +1,6 @@
 using System;
 using ShopApp.Helpers;
+using ShopApp.Interfaces;
 using ShopApp.Models;
 
 namespace ShopApp.Services

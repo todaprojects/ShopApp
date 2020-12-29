@@ -1,4 +1,5 @@
 using System;
+using ShopApp.Interfaces;
 
 namespace ShopApp.Services
 {
