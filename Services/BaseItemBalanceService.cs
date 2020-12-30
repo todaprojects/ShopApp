@@ -9,8 +9,8 @@ namespace ShopApp.Services
     {
         public string AddItem(Shop shop, string addItem, int addQuantity)
         {
-            var toAdd = shop.Items.Find(balance =>
-                balance.Item.Name.Equals(addItem, StringComparison.OrdinalIgnoreCase));
+            var toAdd = shop.Items.Find(item =>
+                item.Name.Equals(addItem, StringComparison.OrdinalIgnoreCase));
 
             if (toAdd != null)
             {

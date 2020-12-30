@@ -9,12 +9,12 @@ namespace ShopApp
     {
         static void Main(string[] args)
         {
-            var shop = ModelFactory.GetShop();
-            shop.Items.Add(ModelFactory.GetItem("Book", 12.90M));
-            shop.Items.Add(ModelFactory.GetItem("Candy", 4.90M));
-            shop.Items.Add(ModelFactory.GetItem("Cup", 9.90M));
+            var shop = new Shop();
+            shop.Items.Add(new Item("Book", 12.90M, 10));
+            shop.Items.Add(new Item("Candy", 4.90M, 10));
+            shop.Items.Add(new Item("Cup", 9.90M, 10));
 
-            var user = ModelFactory.GetUser();
+            var user = new User();
 
             var printer = ServiceFactory.GetPrinter();
             var inputHandler = ServiceFactory.GetInputHandler();
