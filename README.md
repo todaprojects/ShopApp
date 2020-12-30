@@ -1,7 +1,7 @@
 # Shop App
 A .NET console application, written in C#.
 
-### Task v1.0
+### Task v1.0 (lesson2)
 
 #### Create shop that sells Candies, Books, Cups.
 
@@ -10,9 +10,9 @@ A .NET console application, written in C#.
   - Create User class, that holds money balance; 
   - Use OOP, with min 2 classes.
 
-### Task v1.1
+### Task v1.1 (lesson5)
 
-update 'The shop' application done in lesson2 with the concepts explained in:
+Update 'The shop' application done in lesson2 with the concepts explained in:
   - Apply Services principle and separate console printing and shop operations into separate services.
   - In Services constructor there should be no 'new' word, interfaces of services should be used,
    and they should be create(injected) in main method.
